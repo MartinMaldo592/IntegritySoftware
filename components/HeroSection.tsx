@@ -59,17 +59,30 @@ export default function HeroSection() {
     return () => clearInterval(interval);
   }, []);
 
+  // Parallax with strict bounds and desktop-only restriction
   const [parallaxY, setParallaxY] = useState<number>(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrolled = window.scrollY;
-      if (scrolled < 900) {
-        setParallaxY(scrolled * 0.12);
+      // Disable parallax on mobile/tablet to avoid section collisions
+      if (window.innerWidth >= 992) {
+        const scrolled = window.scrollY;
+        if (scrolled < 700) {
+          // Strictly cap parallax to maximum 15px
+          setParallaxY(Math.min(scrolled * 0.03, 15));
+        }
+      } else {
+        setParallaxY(0);
       }
     };
+
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   return (
@@ -114,7 +127,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Hero Slider */}
+        {/* Hero Slider with strictly bounded transform */}
         <div
           className="hero-image-wrap reveal-on-scroll"
           style={{ transform: `translateY(${parallaxY}px)` }}

@@ -992,6 +992,7 @@ h1, h2, h3, h4, h5, h6 {
   .hero-image-wrap {
     height: 420px;
     margin-top: 20px;
+    margin-bottom: 32px;
   }
 
   .horizontal-carousel-track {
@@ -1290,6 +1291,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   .hero-image-wrap {
     height: 240px;
+    margin-bottom: 24px;
   }
   .hero-slider-dots {
     top: 10px;
