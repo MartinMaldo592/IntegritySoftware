@@ -1,12 +1,20 @@
 /* ==========================================================================
-   Integrity Software - Executive Corporate Systems Dashboard
+   Integrity Software - Executive Corporate Systems Dashboard (TypeScript)
    ========================================================================== */
 
+interface SystemStateItem {
+  name: string;
+  status: string;
+  metric: string;
+}
+
+type SystemStates = Record<string, SystemStateItem[]>;
+
 document.addEventListener('DOMContentLoaded', () => {
-  const panelTabs = document.querySelectorAll('.panel-tab-btn');
+  const panelTabs = document.querySelectorAll<HTMLElement>('.panel-tab-btn');
   const panelTitle = document.getElementById('panel-active-title');
 
-  const systemStates = {
+  const systemStates: SystemStates = {
     enterprise: [
       { name: "Core ERP & Cloud Microservices", status: "Operativo", metric: "99.99% Uptime" },
       { name: "API Gateway & SSO Enterprise", status: "Latencia < 18ms", metric: "1.2M Req/día" },
@@ -24,13 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
   };
 
-  function updatePanel(category) {
+  function updatePanel(category: string): void {
     const list = systemStates[category] || systemStates.enterprise;
     const container = document.getElementById('panel-cards-container');
     if (!container) return;
 
     container.innerHTML = '';
-    list.forEach(item => {
+    list.forEach((item) => {
       const card = document.createElement('div');
       card.className = 'sys-card';
       card.innerHTML = `
@@ -47,18 +55,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initial load
   updatePanel('enterprise');
 
-  panelTabs.forEach(btn => {
+  panelTabs.forEach((btn) => {
     btn.addEventListener('click', () => {
-      panelTabs.forEach(b => {
+      panelTabs.forEach((b) => {
         b.style.background = 'transparent';
         b.style.borderColor = 'rgba(255,255,255,0.1)';
       });
       btn.style.background = 'rgba(37, 99, 235, 0.15)';
       btn.style.borderColor = 'var(--accent-blue)';
 
-      const cat = btn.getAttribute('data-category');
+      const cat = btn.getAttribute('data-category') || 'enterprise';
       if (panelTitle) {
-        panelTitle.textContent = btn.textContent.trim();
+        panelTitle.textContent = btn.textContent?.trim() || '';
       }
       updatePanel(cat);
     });

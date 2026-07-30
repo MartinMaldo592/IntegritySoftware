@@ -1,6 +1,8 @@
 import "./globals.css";
+import type { Metadata } from "next";
+import React from "react";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Integrity Software | Desarrollo de Software & Automatización MYPE Perú",
   description:
     "Integrity Software S.A.C. (RUC 20609874125). Empresa peruana especializada en desarrollo de páginas web, bots de WhatsApp, tiendas virtuales con Yape/Plin, sistemas ERP/CRM y automatizaciones SUNAT para MYPES en Perú.",
@@ -15,7 +17,11 @@ export const metadata = {
   ]
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="es">
       <head>

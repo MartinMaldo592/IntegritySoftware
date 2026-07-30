@@ -2,12 +2,24 @@
 
 import { useState, useEffect, useRef } from "react";
 
+interface SliderItem {
+  img: string;
+  title: string;
+  icon: string;
+}
+
+interface TypewriterState {
+  phraseIndex: number;
+  charIndex: number;
+  isDeleting: boolean;
+}
+
 export default function HomePage() {
   // 1. Mobile Menu Drawer Toggle State
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState<boolean>(false);
 
   // 2. Typewriter Loop State with Executive Impact Phrases
-  const phrases = [
+  const phrases: string[] = [
     "Tu Empresa MYPE",
     "Escalar tus Ventas",
     "Ventas en WhatsApp",
@@ -15,15 +27,15 @@ export default function HomePage() {
     "Digitalizar tu Negocio",
     "Automatizar Operaciones"
   ];
-  const [currentText, setCurrentText] = useState(phrases[0]);
-  const typewriterState = useRef({
+  const [currentText, setCurrentText] = useState<string>(phrases[0]);
+  const typewriterState = useRef<TypewriterState>({
     phraseIndex: 0,
     charIndex: phrases[0].length,
     isDeleting: true
   });
 
   useEffect(() => {
-    let timeoutId;
+    let timeoutId: NodeJS.Timeout;
     function typeLoop() {
       const state = typewriterState.current;
       const currentPhrase = phrases[state.phraseIndex];
@@ -56,7 +68,7 @@ export default function HomePage() {
   }, []);
 
   // 3. Hero Automated Software & Systems Slider State
-  const sliderData = [
+  const sliderData: SliderItem[] = [
     {
       img: "/img/hero_enterprise_tech_1785388460733.jpg",
       title: "Arquitectura & Software Empresarial",
@@ -73,7 +85,7 @@ export default function HomePage() {
       icon: "fas fa-chart-line"
     }
   ];
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -83,13 +95,13 @@ export default function HomePage() {
   }, [sliderData.length]);
 
   // 4. Solutions Tab Switcher State & Morphing Indicator Position
-  const [activeTab, setActiveTab] = useState("tab-landing");
-  const tabNavRef = useRef(null);
-  const [indicatorStyle, setIndicatorStyle] = useState({});
+  const [activeTab, setActiveTab] = useState<string>("tab-landing");
+  const tabNavRef = useRef<HTMLDivElement | null>(null);
+  const [indicatorStyle, setIndicatorStyle] = useState<React.CSSProperties>({});
 
   useEffect(() => {
     if (!tabNavRef.current) return;
-    const activeBtn = tabNavRef.current.querySelector(`.tab-btn[data-tab="${activeTab}"]`);
+    const activeBtn = tabNavRef.current.querySelector<HTMLButtonElement>(`.tab-btn[data-tab="${activeTab}"]`);
     if (activeBtn) {
       setIndicatorStyle({
         left: activeBtn.offsetLeft + "px",
@@ -98,7 +110,7 @@ export default function HomePage() {
     }
   }, [activeTab]);
 
-  // 5. Scroll Reveal Intersection Observer (Opción 1)
+  // 5. Scroll Reveal Intersection Observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -117,8 +129,8 @@ export default function HomePage() {
     return () => observer.disconnect();
   }, []);
 
-  // 6. Hero Parallax Effect (Opción 5)
-  const [parallaxY, setParallaxY] = useState(0);
+  // 6. Hero Parallax Effect
+  const [parallaxY, setParallaxY] = useState<number>(0);
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY;
@@ -130,8 +142,8 @@ export default function HomePage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 7. 3D Mouse Tilt Effect Handlers (Opción 3)
-  const handleMouseMove = (e) => {
+  // 7. 3D Mouse Tilt Effect Handlers
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -146,28 +158,30 @@ export default function HomePage() {
     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
   };
 
-  const handleMouseLeave = (e) => {
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget;
     card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
   };
 
   // 8. Horizontal Carousel Scroll Refs
-  const servicesTrackRef = useRef(null);
-  const testimonialsTrackRef = useRef(null);
+  const servicesTrackRef = useRef<HTMLDivElement | null>(null);
+  const testimonialsTrackRef = useRef<HTMLDivElement | null>(null);
 
-  const scrollCarousel = (trackRef, direction) => {
+  const scrollCarousel = (trackRef: React.RefObject<HTMLDivElement | null>, direction: "prev" | "next") => {
     if (!trackRef.current) return;
-    const cardWidth = trackRef.current.querySelector(".carousel-card-item")?.offsetWidth || 300;
+    const cardItem = trackRef.current.querySelector<HTMLDivElement>(".carousel-card-item");
+    const cardWidth = cardItem?.offsetWidth || 300;
     const scrollAmount = (cardWidth + 28) * (direction === "next" ? 1.2 : -1.2);
     trackRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
   };
 
   // 9. Contact Form Submit Handler
-  const [formStatus, setFormStatus] = useState(false);
-  const handleSubmit = (e) => {
+  const [formStatus, setFormStatus] = useState<boolean>(false);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const name = e.target["c-fullname"].value;
-    const tel = e.target["c-tel"].value;
+    const target = e.target as HTMLFormElement;
+    const name = (target.elements.namedItem("c-fullname") as HTMLInputElement).value;
+    const tel = (target.elements.namedItem("c-tel") as HTMLInputElement).value;
 
     const waMsg = encodeURIComponent(
       `Hola Integrity Software (RUC 20609874125), mi nombre es ${name}. Quisiera cotizar el servicio seleccionado. Mi número es: ${tel}`
@@ -296,7 +310,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Hero Executive Software & Systems Automated Carousel with Parallax (Opción 5) */}
+          {/* Hero Executive Software & Systems Automated Carousel with Parallax */}
           <div
             className="hero-image-wrap reveal-on-scroll"
             style={{ transform: `translateY(${parallaxY}px)` }}
@@ -554,7 +568,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Deliverables Tabbed Section with Morphing Indicator (Opción 2) */}
+      {/* Deliverables Tabbed Section with Morphing Indicator */}
       <section className="section" id="detalles">
         <div className="container">
           <div className="section-header reveal-on-scroll">

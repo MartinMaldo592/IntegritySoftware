@@ -1,12 +1,19 @@
 /* ==========================================================================
-   Integrity Software - AI Agent Simulator Script
+   Integrity Software - AI Agent Simulator Script (TypeScript)
    ========================================================================== */
 
+interface SimulationStep {
+  text: string;
+  delay: number;
+}
+
+type AgentSimulations = Record<string, SimulationStep[]>;
+
 document.addEventListener('DOMContentLoaded', () => {
-  const agentCards = document.querySelectorAll('.agent-card');
+  const agentCards = document.querySelectorAll<HTMLElement>('.agent-card');
   const terminalBox = document.getElementById('terminal-box');
 
-  const agentSimulations = {
+  const agentSimulations: AgentSimulations = {
     whatsapp: [
       { text: "[SISTEMA] Agente WhatsApp 'IntegrityBot' activo.", delay: 300 },
       { text: "[CLIENTE PERÚ] 'Hola, necesito factura por S/ 4,500 de mi pedido #8920'", delay: 900 },
@@ -27,14 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
   };
 
-  let activeInterval = null;
-
-  function runAgentDemo(agentKey) {
+  function runAgentDemo(agentKey: string): void {
     if (!terminalBox) return;
     terminalBox.innerHTML = '';
     const logs = agentSimulations[agentKey] || agentSimulations.whatsapp;
 
-    logs.forEach(log => {
+    logs.forEach((log) => {
       setTimeout(() => {
         const line = document.createElement('div');
         line.className = 'terminal-line';
@@ -48,11 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initial Run
   runAgentDemo('whatsapp');
 
-  agentCards.forEach(card => {
+  agentCards.forEach((card) => {
     card.addEventListener('click', () => {
-      agentCards.forEach(c => c.classList.remove('active'));
+      agentCards.forEach((c) => c.classList.remove('active'));
       card.classList.add('active');
-      const agentType = card.getAttribute('data-agent');
+      const agentType = card.getAttribute('data-agent') || 'whatsapp';
       runAgentDemo(agentType);
     });
   });

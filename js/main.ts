@@ -1,12 +1,17 @@
-// Integrity Software - Main JavaScript Engine
+// Integrity Software - Main TypeScript Engine
 // Typewriter Engine, Mobile Drawer, Horizontal Carousels, Scroll Reveal & Hero Slider
+
+interface SliderItem {
+  title: string;
+  icon: string;
+}
 
 document.addEventListener('DOMContentLoaded', () => {
 
   // 1. Mobile Navigation Drawer Toggle
   const mobileToggle = document.getElementById('mobile-toggle');
   const mobileDrawer = document.getElementById('mobile-menu-drawer');
-  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+  const mobileLinks = document.querySelectorAll<HTMLElement>('.mobile-nav-link');
 
   if (mobileToggle && mobileDrawer) {
     mobileToggle.addEventListener('click', () => {
@@ -20,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    mobileLinks.forEach(link => {
+    mobileLinks.forEach((link) => {
       link.addEventListener('click', () => {
         mobileDrawer.classList.remove('is-open');
         mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
@@ -30,10 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // 2. Hardware Accelerated Scroll Reveal (Intersection Observer API)
-  const revealElements = document.querySelectorAll('.reveal-on-scroll');
+  const revealElements = document.querySelectorAll<HTMLElement>('.reveal-on-scroll');
 
   const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
@@ -44,11 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
     rootMargin: '0px 0px -40px 0px'
   });
 
-  revealElements.forEach(el => revealObserver.observe(el));
+  revealElements.forEach((el) => revealObserver.observe(el));
 
 
   // 3. Typewriter & Overwriting Engine with Executive Impact & Scale Phrases
-  const phrases = [
+  const phrases: string[] = [
     "Tu Empresa MYPE",
     "Escalar tus Ventas",
     "Ventas en WhatsApp",
@@ -63,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let isDeleting = true;
   let typingSpeed = 2000;
 
-  function typeLoop() {
+  function typeLoop(): void {
     const currentPhrase = phrases[phraseIndex];
 
     if (isDeleting) {
@@ -94,12 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // 4. Hero Automated Software & Systems Slider (Fade Transitions)
-  const sliderImages = document.querySelectorAll('.slider-img');
-  const sliderDots = document.querySelectorAll('.slider-dot');
+  const sliderImages = document.querySelectorAll<HTMLElement>('.slider-img');
+  const sliderDots = document.querySelectorAll<HTMLElement>('.slider-dot');
   const sliderTitleEl = document.getElementById('slider-badge-title');
   const sliderIconEl = document.getElementById('slider-badge-icon');
 
-  const sliderData = [
+  const sliderData: SliderItem[] = [
     {
       title: "Arquitectura & Software Empresarial",
       icon: "fas fa-laptop-code"
@@ -115,9 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   let currentSlide = 0;
-  let sliderInterval = null;
+  let sliderInterval: NodeJS.Timeout | null = null;
 
-  function goToSlide(index) {
+  function goToSlide(index: number): void {
     if (!sliderImages.length) return;
 
     sliderImages.forEach((img, i) => {
@@ -146,12 +151,12 @@ document.addEventListener('DOMContentLoaded', () => {
     currentSlide = index;
   }
 
-  function nextSlide() {
+  function nextSlide(): void {
     let nextIndex = (currentSlide + 1) % sliderImages.length;
     goToSlide(nextIndex);
   }
 
-  function startSlider() {
+  function startSlider(): void {
     sliderInterval = setInterval(nextSlide, 3500);
   }
 
@@ -160,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sliderDots.forEach((dot, index) => {
       dot.addEventListener('click', () => {
-        clearInterval(sliderInterval);
+        if (sliderInterval) clearInterval(sliderInterval);
         goToSlide(index);
         startSlider();
       });
@@ -169,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // 5. Generic Horizontal Scroll Carousel Helper Engine
-  function setupHorizontalCarousel(trackId, prevBtnId, nextBtnId, dotsContainerId) {
+  function setupHorizontalCarousel(trackId: string, prevBtnId: string, nextBtnId: string, dotsContainerId: string): void {
     const track = document.getElementById(trackId);
     const prevBtn = document.getElementById(prevBtnId);
     const nextBtn = document.getElementById(nextBtnId);
@@ -177,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!track) return;
 
-    const cardItems = track.querySelectorAll('.carousel-card-item');
+    const cardItems = track.querySelectorAll<HTMLElement>('.carousel-card-item');
     if (!cardItems.length) return;
 
     // Build indicator dots
@@ -195,9 +200,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    const dots = dotsContainer ? dotsContainer.querySelectorAll('.carousel-indicator-dot') : [];
+    const dots = dotsContainer ? dotsContainer.querySelectorAll<HTMLElement>('.carousel-indicator-dot') : [];
 
-    function updateActiveDot() {
+    function updateActiveDot(): void {
+      if (!track) return;
       const cardWidth = cardItems[0].offsetWidth + 28;
       const scrollIndex = Math.round(track.scrollLeft / cardWidth);
       dots.forEach((d, idx) => {
@@ -234,37 +240,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // 6. Solutions Showcase Tab Switcher
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  const tabPanes = document.querySelectorAll('.tab-pane');
+  const tabBtns = document.querySelectorAll<HTMLElement>('.tab-btn');
+  const tabPanes = document.querySelectorAll<HTMLElement>('.tab-pane');
 
-  tabBtns.forEach(btn => {
+  tabBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
       const targetTab = btn.getAttribute('data-tab');
 
-      tabBtns.forEach(b => b.classList.remove('active'));
-      tabPanes.forEach(p => p.classList.remove('active'));
+      tabBtns.forEach((b) => b.classList.remove('active'));
+      tabPanes.forEach((p) => p.classList.remove('active'));
 
       btn.classList.add('active');
-      const activePane = document.getElementById(targetTab);
-      if (activePane) {
-        activePane.classList.add('active');
+      if (targetTab) {
+        const activePane = document.getElementById(targetTab);
+        if (activePane) {
+          activePane.classList.add('active');
+        }
       }
     });
   });
 
 
   // 7. Interactive Contact Form Handler with Feedback Status
-  const contactForm = document.getElementById('contact-form');
+  const contactForm = document.getElementById('contact-form') as HTMLFormElement | null;
   const formStatus = document.getElementById('form-status');
 
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', (e: Event) => {
       e.preventDefault();
 
-      const name = document.getElementById('c-fullname').value;
-      const tel = document.getElementById('c-tel').value;
-      const interestSelect = document.getElementById('c-interest');
-      const interestText = interestSelect.options[interestSelect.selectedIndex].text;
+      const nameEl = document.getElementById('c-fullname') as HTMLInputElement | null;
+      const telEl = document.getElementById('c-tel') as HTMLInputElement | null;
+      const interestSelect = document.getElementById('c-interest') as HTMLSelectElement | null;
+
+      const name = nameEl ? nameEl.value : '';
+      const tel = telEl ? telEl.value : '';
+      const interestText = interestSelect && interestSelect.selectedIndex >= 0
+        ? interestSelect.options[interestSelect.selectedIndex].text
+        : '';
 
       const waMsg = encodeURIComponent(`Hola Integrity Software (RUC 20609874125), mi nombre es ${name}. Quisiera cotizar el servicio: ${interestText}. Mi número es: ${tel}`);
       const waUrl = `https://wa.me/51900000000?text=${waMsg}`;
