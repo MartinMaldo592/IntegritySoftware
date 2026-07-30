@@ -84,14 +84,19 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="pt-28 pb-12 sm:pt-36 sm:pb-16 lg:pt-40 lg:pb-20 bg-gradient-to-b from-slate-50 to-white overflow-hidden" id="inicio">
-      <div className="w-[95%] max-w-7xl mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+    <section className="pt-4 pb-10 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-16 bg-gradient-to-b from-slate-50 to-white overflow-hidden" id="inicio">
+      <div className="w-[95%] max-w-7xl mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
         <div className="reveal-on-scroll">
-          {/* Reserved fixed min-height to accommodate 3 lines of title text and prevent any layout shift on typewriter changes */}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6 text-center lg:text-left font-heading min-h-[145px] sm:min-h-[185px] lg:min-h-[225px] block">
-            Software &amp; Automatización Accesible para{" "}
-            <span className="text-blue-600 font-extrabold inline">
-              {currentText}
+          {/* 
+            Structure h1 into 3 static lines (Software & / Automatización / Accesible para) plus reserved 2-line typewriter space.
+            Total min-h-[260px] sm:min-h-[300px] lg:min-h-[340px] guarantees zero layout shift across all devices.
+          */}
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-5 text-center lg:text-left font-heading block min-h-[260px] sm:min-h-[300px] lg:min-h-[340px]">
+            <span className="block">Software &amp;</span>
+            <span className="block">Automatización</span>
+            <span className="block mb-1">Accesible para</span>
+            <span className="text-blue-600 font-extrabold block min-h-[2.4em] sm:min-h-[2.2em] lg:min-h-[2.2em]">
+              <span>{currentText}</span>
               <span className="text-blue-600 animate-pulse font-bold ml-0.5">|</span>
             </span>
           </h1>
@@ -127,9 +132,9 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Hero Slider with strictly bounded transform */}
+        {/* Hero Slider aligned to top with increased height matching the text column */}
         <div
-          className="relative rounded-2xl overflow-hidden shadow-xl bg-white border border-slate-200 h-[300px] sm:h-[380px] lg:h-[450px] reveal-on-scroll my-4 lg:my-0"
+          className="relative rounded-2xl overflow-hidden shadow-xl bg-white border border-slate-200 h-[340px] sm:h-[460px] lg:h-[550px] xl:h-[570px] reveal-on-scroll my-2 lg:my-0 w-full"
           style={{ transform: `translateY(${parallaxY}px)` }}
         >
           <div className="relative w-full h-full">
