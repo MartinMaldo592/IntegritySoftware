@@ -86,16 +86,18 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="py-12 md:py-20 bg-gradient-to-b from-slate-50 to-white overflow-hidden" id="inicio">
-      <div className="w-[95%] max-w-7xl mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center">
+    <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-b from-slate-50 to-white overflow-hidden" id="inicio">
+      <div className="w-[95%] max-w-7xl mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div className="reveal-on-scroll">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6 text-center lg:text-left font-heading">
-            Software &amp; Automatización Accesible para{" "}
-            <span className="inline-block min-w-[16ch] text-left lg:text-left">
-              <span className="text-blue-600 font-extrabold">{currentText}</span>
+          {/* Reserved fixed height container to prevent layout shifting on typewriter text change */}
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6 text-center lg:text-left font-heading min-h-[110px] sm:min-h-[135px] lg:min-h-[160px] flex flex-col justify-start">
+            <span>Software &amp; Automatización Accesible para</span>
+            <span className="text-blue-600 font-extrabold inline-flex items-center justify-center lg:justify-start">
+              <span>{currentText}</span>
               <span className="text-blue-600 animate-pulse font-bold ml-0.5">|</span>
             </span>
           </h1>
+
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0 text-center lg:text-left">
             Ayudamos a micro y pequeñas empresas peruanas a vender más y ahorrar tiempo: Landing pages con Bot de WhatsApp, Tiendas virtuales con Yape/Plin, Sistemas ERP/CRM a medida y Automatizaciones SUNAT con garantía de soporte y desarrollo personalizado.
           </p>
@@ -129,7 +131,7 @@ export default function HeroSection() {
 
         {/* Hero Slider with strictly bounded transform */}
         <div
-          className="relative rounded-2xl overflow-hidden shadow-xl bg-white border border-slate-200 h-[320px] sm:h-[420px] lg:h-[480px] reveal-on-scroll"
+          className="relative rounded-2xl overflow-hidden shadow-xl bg-white border border-slate-200 h-[300px] sm:h-[380px] lg:h-[450px] reveal-on-scroll my-4 lg:my-0"
           style={{ transform: `translateY(${parallaxY}px)` }}
         >
           <div className="relative w-full h-full">
