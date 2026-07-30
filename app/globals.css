@@ -132,8 +132,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Navbar */
 .navbar {
-  position: fixed;
-  top: 35px;
+  position: sticky;
+  top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
@@ -142,7 +142,12 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 1px solid var(--border-subtle);
   padding: 16px 0;
   box-shadow: var(--shadow-sm);
-  transition: var(--transition-normal);
+  transition: all 0.3s ease;
+}
+
+.navbar.is-scrolled {
+  padding: 10px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .nav-container {
@@ -360,7 +365,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Hero Section */
 .hero {
-  padding: 180px 0 100px;
+  padding: 60px 0 80px;
   background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
   border-bottom: 1px solid var(--border-subtle);
   width: 100%;
