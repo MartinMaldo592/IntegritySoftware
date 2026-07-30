@@ -12,10 +12,12 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import ScrollReveal from "@/components/ScrollReveal";
+import SmoothScroll from "@/components/SmoothScroll";
 
 export default function HomePage() {
   return (
     <>
+      <SmoothScroll />
       <ScrollReveal />
       <TopNoticeBar />
       <Navbar />
