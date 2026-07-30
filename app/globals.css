@@ -1088,7 +1088,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 6px 12px;
   }
   .navbar {
-    top: 31px;
+    top: 0;
     padding: 12px 0;
   }
   .brand-title {
@@ -1100,7 +1100,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.1rem;
   }
   .hero {
-    padding: 120px 0 50px;
+    padding: 40px 0 40px;
   }
   .hero-title {
     font-size: clamp(1.65rem, 5.5vw, 2.2rem);
