@@ -84,12 +84,13 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-b from-slate-50 to-white overflow-hidden" id="inicio">
+    <section className="pt-28 pb-12 sm:pt-36 sm:pb-16 lg:pt-40 lg:pb-20 bg-gradient-to-b from-slate-50 to-white overflow-hidden" id="inicio">
       <div className="w-[95%] max-w-7xl mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div className="reveal-on-scroll">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6 text-center lg:text-left font-heading">
+          {/* Reserved fixed min-height to accommodate 3 lines of title text and prevent any layout shift on typewriter changes */}
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6 text-center lg:text-left font-heading min-h-[145px] sm:min-h-[185px] lg:min-h-[225px] block">
             Software &amp; Automatización Accesible para{" "}
-            <span className="text-blue-600 font-extrabold">
+            <span className="text-blue-600 font-extrabold inline">
               {currentText}
               <span className="text-blue-600 animate-pulse font-bold ml-0.5">|</span>
             </span>
