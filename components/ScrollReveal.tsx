@@ -6,8 +6,13 @@ export default function ScrollReveal() {
   useEffect(() => {
     const revealElements = document.querySelectorAll(".reveal-on-scroll");
 
+    const revealElement = (el: Element) => {
+      el.classList.add("revealed");
+      el.classList.add("is-revealed");
+    };
+
     if (!("IntersectionObserver" in window)) {
-      revealElements.forEach((el) => el.classList.add("revealed"));
+      revealElements.forEach(revealElement);
       return;
     }
 
@@ -15,31 +20,30 @@ export default function ScrollReveal() {
       (entries, obs) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("revealed");
+            revealElement(entry.target);
             obs.unobserve(entry.target);
           }
         });
       },
       {
-        threshold: 0.12,
-        rootMargin: "0px 0px -40px 0px"
+        threshold: 0.05,
+        rootMargin: "50px 0px 0px 0px"
       }
     );
 
     revealElements.forEach((el) => {
       const rect = el.getBoundingClientRect();
-      // Instantly reveal elements visible in initial viewport
-      if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
-        el.classList.add("revealed");
+      if (rect.top < window.innerHeight * 0.95 && rect.bottom > 0) {
+        revealElement(el);
       } else {
         observer.observe(el);
       }
     });
 
-    // Safety fallback: reveal any remaining hidden elements after 5 seconds
+    // Instant safety fallback: guarantee all elements reveal within 250ms
     const fallbackTimer = setTimeout(() => {
-      revealElements.forEach((el) => el.classList.add("revealed"));
-    }, 5000);
+      revealElements.forEach(revealElement);
+    }, 250);
 
     return () => {
       clearTimeout(fallbackTimer);
