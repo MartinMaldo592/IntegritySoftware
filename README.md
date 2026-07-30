@@ -16,8 +16,8 @@ El proyecto cuenta con una arquitectura moderna migrada 100% a **TypeScript**, *
 
 ## 🛠️ Tecnologías Utilizadas
 
-- **Framework Principal:** Next.js 15 (App Router)
-- **Lenguaje:** TypeScript 5.7+
+- **Framework Principal:** Next.js 16 (Turbopack Engine)
+- **Lenguaje:** TypeScript 7.0+
 - **Librería UI:** React 19
 - **Estilos & Diseño:** Vanilla CSS 3 (Glassmorphism, CSS Grid, Custom Properties, Responsive Layouts)
 - **Iconografía & Fuentes:** FontAwesome 6, Google Fonts (*Inter* & *Plus Jakarta Sans*)
