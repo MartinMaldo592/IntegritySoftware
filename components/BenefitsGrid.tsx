@@ -24,19 +24,21 @@ export default function BenefitsGrid() {
   };
 
   return (
-    <section className="section" style={{ background: "#ffffff", borderBottom: "1px solid var(--border-subtle)" }}>
-      <div className="container">
-        <div className="benefits-grid">
+    <section className="py-16 md:py-20 bg-white border-b border-slate-200">
+      <div className="w-[95%] max-w-7xl mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {BENEFITS_DATA.map((benefit, idx) => (
             <div
               key={idx}
-              className={`benefit-card reveal-on-scroll reveal-delay-${(idx % 3) + 1} tilt-card`}
+              className={`bg-slate-50 border border-slate-200 p-8 rounded-2xl transition-all duration-300 hover:shadow-xl hover:border-blue-300 cursor-pointer text-center md:text-left reveal-on-scroll reveal-delay-${(idx % 3) + 1}`}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
-              <i className={`${benefit.icon} benefit-icon`}></i>
-              <h4>{benefit.title}</h4>
-              <p>{benefit.description}</p>
+              <div className="w-14 h-14 rounded-xl bg-blue-100/70 text-blue-600 flex items-center justify-center text-2xl mb-5 mx-auto md:mx-0 shadow-sm">
+                <i className={benefit.icon}></i>
+              </div>
+              <h4 className="text-xl font-bold text-slate-900 mb-3 font-heading">{benefit.title}</h4>
+              <p className="text-slate-600 text-sm leading-relaxed m-0">{benefit.description}</p>
             </div>
           ))}
         </div>

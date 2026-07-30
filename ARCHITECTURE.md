@@ -1,18 +1,18 @@
 # 🏛️ Documentación de Arquitectura de Software: Integrity Software S.A.C.
 
 > **Fecha:** Julio 2026  
-> **Versión de Arquitectura:** 2.0.0 (Modular Next.js 16 + TypeScript 7)  
+> **Versión de Arquitectura:** 3.0.0 (Tailwind CSS v4 + Next.js 16 + TypeScript 7)  
 > **Autor:** Antigravity AI & Equipo de Ingeniería de Integrity Software S.A.C.
 
 ---
 
 ## 🎯 1. Filosofía de Arquitectura
 
-El proyecto está diseñado bajo los principios de **Clean Architecture** adaptados a aplicaciones web modernas de alto rendimiento con **Next.js 16 App Router**.
+El proyecto está diseñado bajo los principios de **Clean Architecture** adaptados a aplicaciones web modernas de alto rendimiento con **Next.js 16 App Router** y **Tailwind CSS v4**.
 
 ### Principios Fundamentales:
 1. **Desacoplamiento Estricto (Data-UI Separation):** Ningún componente visual contiene listas de datos ni textos fijos dentro del código JSX. Toda la información reside en la capa de datos (`data/`).
-2. **Componentes Atómicos e Independientes (`components/`):** Cada sección de la página web es un módulo autosuficiente con su propia lógica de presentación y estado reactivo.
+2. **Estilizado Utility-First con Tailwind CSS:** Cada componente UI gestiona sus propios estilos de forma aislada mediante utilidades de Tailwind CSS, haciendo trivial la adición, duplicación o edición de secciones en el futuro.
 3. **Tipado Estricto Cero-Implicit-Any (`types/`):** Todas las estructuras de datos, props y respuestas de estado están respaldadas por interfaces de **TypeScript 7.0**.
 4. **Cero Manipulación Manual del DOM:** Las animaciones e interacciones (efectos 3D tilt, carruseles horizontales, tabs morphing) se gestionan mediante **React Hooks** (`useState`, `useEffect`, `useRef`).
 
@@ -30,7 +30,7 @@ graph TD
         T --> D5[data/deliverables.ts]
     end
 
-    subgraph Component UI Layer
+    subgraph Component UI Layer (Tailwind CSS v4)
         D1 --> C1[components/HeroSection.tsx]
         D2 --> C2[components/BenefitsGrid.tsx]
         D3 --> C3[components/ServicesCarousel.tsx]
@@ -74,19 +74,20 @@ graph TD
 ## 🔧 4. Mantenimiento y Extensibilidad
 
 ### ¿Cómo agregar o modificar un Servicio MYPE?
-1. Abre [data/services.ts](file:///C:/Users/1964-oti/Desktop/PROYECTOS/IntegritySoftware/data/services.ts).
+1. Abre [data/services.ts](file:///c:/Users/1964-oti/Downloads/PROYECTOS/IntegritySoftware/data/services.ts).
 2. Agrega o modifica el objeto cumpliendo la interfaz `ServiceItem`.
-3. ¡Listo! El componente `ServicesCarousel.tsx` lo renderizará automáticamente con todas sus animaciones 3D.
+3. ¡Listo! El componente `ServicesCarousel.tsx` lo renderizará automáticamente.
 
-### ¿Cómo agregar o modificar un Testimonio?
-1. Abre [data/testimonials.ts](file:///C:/Users/1964-oti/Desktop/PROYECTOS/IntegritySoftware/data/testimonials.ts).
-2. Agrega el nuevo testimonio con sus estrellas e iniciales.
+### ¿Cómo modificar el diseño o agregar una sección nueva?
+1. Crea un nuevo componente en `components/NuevaSeccion.tsx`.
+2. Utiliza las clases utilitarias de **Tailwind CSS**.
+3. Importa e inserta el componente en `app/page.tsx`.
 
 ---
 
 ## 🔒 5. Estándares de Compilación
 
-La aplicación utiliza el compilador oficial de Next.js 16 con soporte para **TypeScript 7 CLI**:
+La aplicación utiliza el compilador oficial de Next.js 16 con soporte para **TypeScript 7 CLI** y **Tailwind CSS v4**:
 ```bash
 npm run build
 ```

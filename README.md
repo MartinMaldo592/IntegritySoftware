@@ -3,11 +3,10 @@
 > **RUC:** 20609874125 | **Empresa Formal S.A.C.** | **Sede:** Lima, Perú
 
 [![Next.js 16](https://img.shields.io/badge/Next.js-16.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4.0-38bdf8?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
 [![TypeScript 7](https://img.shields.io/badge/TypeScript-7.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![React 19](https://img.shields.io/badge/React-19.0-61dafb?style=for-the-badge&logo=react)](https://react.dev/)
 [![Turbopack](https://img.shields.io/badge/Engine-Turbopack-violet?style=for-the-badge)](https://nextjs.org/docs/app/building-your-application/optimizing/turbopack)
-
-![Integrity Software Enterprise](public/img/hero_enterprise_tech_1785388460733.jpg)
 
 ---
 
@@ -15,7 +14,7 @@
 
 **Integrity Software** es el portal corporativo y plataforma de servicios tecnológicos de **INTEGRITY SOFTWARE S.A.C.**, empresa peruana especializada en el desarrollo de software a medida, sistemas ERP/CRM, automatizaciones SUNAT y bots inteligentes de WhatsApp para Micro y Pequeñas Empresas (MYPES).
 
-La plataforma cuenta con una **arquitectura modular de alto nivel**, construida 100% en **TypeScript 7**, impulsada por **Next.js 16** y la biblioteca **React 19**, garantizando velocidad ultrarrápida (Turbopack Engine), renderizado estático optimizado (SSG), cero deuda técnica y mantenibilidad profesional.
+La plataforma cuenta con una **arquitectura basada en Tailwind CSS v4 y TypeScript 7**, impulsada por **Next.js 16** y **React 19**, garantizando máxima facilidad de mantenimiento, escalabilidad rápida para agregar nuevas páginas o componentes y velocidad ultrarrápida (Turbopack Engine).
 
 ---
 
@@ -26,23 +25,24 @@ La plataforma cuenta con una **arquitectura modular de alto nivel**, construida 
 | **Lenguaje Core** | `TypeScript 7.0` | Tipado estático estricto, interfaces desacopladas y cero `any`. |
 | **Framework Web** | `Next.js 16` | App Router, soporte para TypeScript 7 CLI y compilación Turbopack. |
 | **UI Library** | `React 19` | Arquitectura basada en componentes reactivos y hooks personalizados. |
-| **Estilos & UI** | `Vanilla CSS3` | Tokens de diseño, Glassmorphism, 3D Tilt Effects, Flexbox/Grid y Parallax. |
+| **Estilos & UI** | `Tailwind CSS v4` | Framework utility-first para edición ultra rápida de secciones e interfaces. |
+| **PostCSS Processor** | `@tailwindcss/postcss` | Compilación optimizada de utilidades CSS de producción. |
 | **Tipografías** | `Google Fonts` | *Inter* & *Plus Jakarta Sans* |
 | **Iconografía** | `FontAwesome 6` | Iconos vectoriales corporativos |
 
 ---
 
-## 🏗️ Estructura del Proyecto (Arquitectura Modular)
+## 🏗️ Estructura del Proyecto (Arquitectura Modular & Tailwind CSS)
 
-El proyecto sigue el patrón de diseño **Desacoplamiento de Componentes y Datos** (*Data-UI Separation Pattern*):
+El proyecto combina **Tailwind CSS Utility-First** con el patrón **Data-UI Separation Pattern**:
 
 ```
 IntegritySoftware/
 ├── app/
-│   ├── globals.css           # Sistema de diseño, tokens CSS y variables globales
+│   ├── globals.css           # Directivas @import "tailwindcss", @theme y Lenis scroll
 │   ├── layout.tsx            # Root Layout (SEO Metadata, Fuentes y HTML Head)
 │   └── page.tsx              # Página principal (Composición modular de 25 líneas)
-├── components/               # Componentes UI encapsulados e independientes
+├── components/               # Componentes UI autónomos construidos con Tailwind CSS
 │   ├── TopNoticeBar.tsx      # Barra superior con RUC y Razón Social formal
 │   ├── Navbar.tsx            # Navegación principal y menú drawer móvil
 │   ├── HeroSection.tsx       # Hero interactivo, máquina de escribir y slider
@@ -54,7 +54,7 @@ IntegritySoftware/
 │   ├── ContactSection.tsx    # Formulario de cotización conectado a WhatsApp
 │   ├── Footer.tsx            # Pie de página corporativo
 │   └── WhatsAppFloat.tsx     # Botón flotante animado de atención 24/7
-├── data/                     # Capa de contenidos desacoplada (Sin código visual)
+├── data/                     # Capa de contenidos desacoplada (Modificación rápida)
 │   ├── hero.ts               # Frases de máquina de escribir y diapositivas
 │   ├── benefits.ts           # Tarjetas de beneficios clave
 │   ├── services.ts           # Lista de 5 servicios MYPE especializados
@@ -63,8 +63,8 @@ IntegritySoftware/
 ├── types/                    # Interfaces estricta de TypeScript
 │   └── index.ts              # Tipos globales (ServiceItem, TestimonialItem, etc.)
 ├── public/                   # Recursos estáticos y multimedia
-│   └── img/                  # Fotografías y banners de alta resolución
-├── next.config.ts            # Configuración de Next.js (TypeScript 7 CLI)
+├── postcss.config.mjs        # Configuración de PostCSS para Tailwind CSS v4
+├── next.config.ts            # Configuración de Next.js
 ├── tsconfig.json             # Configuración del compilador TypeScript 7
 ├── README.md                 # Documentación técnica corporativa
 └── ARCHITECTURE.md           # Guía técnica de arquitectura de software
@@ -98,7 +98,6 @@ IntegritySoftware/
 1. **Clonar el repositorio:**
    ```bash
    git clone https://github.com/MartinMaldo592/IntegritySoftware.git
-   cd IntegritySoftware
    ```
 
 2. **Instalar dependencias:**
@@ -110,30 +109,9 @@ IntegritySoftware/
    ```bash
    npm run dev
    ```
-   Accede a `http://localhost:3005` en tu navegador.
+   Abre [http://localhost:3005](http://localhost:3005) en tu navegador.
 
-### Compilación para Producción (TypeScript Check & SSG)
-
-Para generar la compilación optimizada con Next.js 16 y TypeScript 7:
-```bash
-npm run build
-```
-
-Para ejecutar el servidor de producción localmente:
-```bash
-npm run start
-```
-
----
-
-## 🏢 Información Corporativa & Legal
-
-- **Razón Social:** INTEGRITY SOFTWARE S.A.C.
-- **RUC:** 20609874125
-- **Domicilio:** Lima, Perú
-- **Correo Corporativo:** contacto@integritysoftware.pe
-- **WhatsApp:** +51 900 000 000
-
----
-
-© 2026 **INTEGRITY SOFTWARE S.A.C.** Todos los derechos reservados.
+4. **Compilar para producción:**
+   ```bash
+   npm run build
+   ```

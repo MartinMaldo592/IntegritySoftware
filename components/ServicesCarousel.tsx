@@ -35,44 +35,58 @@ export default function ServicesCarousel() {
   };
 
   return (
-    <section className="section" id="servicios">
-      <div className="container">
-        <div className="section-header reveal-on-scroll">
-          <h2>Soluciones Adaptadas a la Realidad MYPE Peruana</h2>
-          <p>Servicios enfocados en acelerar tus ventas y automatizar tu negocio.</p>
+    <section className="py-16 md:py-24 bg-slate-50/80 border-b border-slate-200" id="servicios">
+      <div className="w-[95%] max-w-7xl mx-auto px-4 md:px-6">
+        <div className="text-center max-w-3xl mx-auto mb-12 reveal-on-scroll">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 font-heading tracking-tight mb-4">
+            Soluciones Adaptadas a la Realidad MYPE Peruana
+          </h2>
+          <p className="text-slate-600 text-base sm:text-lg">
+            Servicios enfocados en acelerar tus ventas y automatizar tu negocio.
+          </p>
         </div>
 
-        <div className="carousel-wrapper reveal-on-scroll">
-          <div className="horizontal-carousel-track" ref={trackRef}>
+        <div className="relative reveal-on-scroll">
+          <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 pt-2 scrollbar-none scroll-smooth" ref={trackRef}>
             {SERVICES_DATA.map((service, idx) => (
-              <div key={idx} className="carousel-card-item">
+              <div key={idx} className="flex-none w-[290px] sm:w-[350px] snap-start carousel-card-item">
                 <div
-                  className="service-card-light tilt-card"
+                  className="bg-white border border-slate-200 p-7 rounded-2xl shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 cursor-pointer h-full flex flex-col justify-between"
                   onMouseMove={handleMouseMove}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <div className="service-icon-box">
-                    <i className={service.icon}></i>
+                  <div>
+                    <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center text-xl mb-5 shadow-md shadow-blue-500/20">
+                      <i className={service.icon}></i>
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3 font-heading leading-snug">{service.title}</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed mb-0">
+                      <strong className="text-slate-800 font-semibold">¿Qué le resuelve al negocio?:</strong> {service.problemSolved}
+                    </p>
                   </div>
-                  <h3>{service.title}</h3>
-                  <p>
-                    <strong>¿Qué le resuelve al negocio?:</strong> {service.problemSolved}
-                  </p>
-                  <div style={{ marginTop: "20px", paddingTop: "16px", borderTop: "1px solid var(--border-subtle)" }}>
-                    <small style={{ color: "var(--accent-blue)", fontWeight: 700, fontSize: "0.95rem" }}>
-                      {service.badge}
-                    </small>
+                  <div className="mt-6 pt-4 border-t border-slate-100">
+                    <span className="text-blue-600 font-bold text-xs sm:text-sm inline-flex items-center gap-1">
+                      <i className="fas fa-check-circle text-xs"></i> {service.badge}
+                    </span>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="carousel-controls-bar">
-            <button className="carousel-nav-btn" onClick={() => scroll("prev")} aria-label="Anterior">
+          <div className="flex justify-center gap-3 mt-6">
+            <button
+              className="w-11 h-11 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 shadow-sm flex items-center justify-center transition-all cursor-pointer text-sm"
+              onClick={() => scroll("prev")}
+              aria-label="Anterior"
+            >
               <i className="fas fa-chevron-left"></i>
             </button>
-            <button className="carousel-nav-btn" onClick={() => scroll("next")} aria-label="Siguiente">
+            <button
+              className="w-11 h-11 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 shadow-sm flex items-center justify-center transition-all cursor-pointer text-sm"
+              onClick={() => scroll("next")}
+              aria-label="Siguiente"
+            >
               <i className="fas fa-chevron-right"></i>
             </button>
           </div>
