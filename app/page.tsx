@@ -11,10 +11,12 @@ import TrustBanner from "@/components/TrustBanner";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function HomePage() {
   return (
     <>
+      <ScrollReveal />
       <TopNoticeBar />
       <Navbar />
       <HeroSection />
