@@ -1309,17 +1309,33 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Opción 1: Scroll Reveal & Stagger Animation */
+/* Premium Executive Scroll Reveal & Stagger Animation */
 .reveal-on-scroll {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  opacity: 0;
+  transform: translateY(32px) scale(0.98);
+  filter: blur(4px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
 }
 
 .reveal-on-scroll.revealed {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.reveal-delay-1 {
+  transition-delay: 0.15s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.3s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.45s;
 }
 
 /* Opción 2: Morphing Tab Indicator Pill */

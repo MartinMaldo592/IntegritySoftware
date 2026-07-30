@@ -12,29 +12,34 @@ export default function ScrollReveal() {
     }
 
     const observer = new IntersectionObserver(
-      (entries) => {
+      (entries, obs) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("revealed");
+            obs.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.05, rootMargin: "50px 0px 0px 0px" }
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -40px 0px"
+      }
     );
 
     revealElements.forEach((el) => {
-      // Immediately reveal if element is already in viewport or top of page
       const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight) {
+      // Instantly reveal elements visible in initial viewport
+      if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
         el.classList.add("revealed");
+      } else {
+        observer.observe(el);
       }
-      observer.observe(el);
     });
 
-    // Fallback timer: guarantee all elements reveal within 300ms
+    // Safety fallback: reveal any remaining hidden elements after 5 seconds
     const fallbackTimer = setTimeout(() => {
       revealElements.forEach((el) => el.classList.add("revealed"));
-    }, 300);
+    }, 5000);
 
     return () => {
       clearTimeout(fallbackTimer);

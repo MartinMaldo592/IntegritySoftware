@@ -30,7 +30,7 @@ export default function BenefitsGrid() {
           {BENEFITS_DATA.map((benefit, idx) => (
             <div
               key={idx}
-              className="benefit-card reveal-on-scroll tilt-card"
+              className={`benefit-card reveal-on-scroll reveal-delay-${(idx % 3) + 1} tilt-card`}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
