@@ -64,11 +64,9 @@ export default function HeroSection() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Disable parallax on mobile/tablet to avoid section collisions
       if (window.innerWidth >= 992) {
         const scrolled = window.scrollY;
         if (scrolled < 700) {
-          // Strictly cap parallax to maximum 15px
           setParallaxY(Math.min(scrolled * 0.03, 15));
         }
       } else {
@@ -89,11 +87,10 @@ export default function HeroSection() {
     <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-b from-slate-50 to-white overflow-hidden" id="inicio">
       <div className="w-[95%] max-w-7xl mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div className="reveal-on-scroll">
-          {/* Reserved fixed height container to prevent layout shifting on typewriter text change */}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6 text-center lg:text-left font-heading min-h-[110px] sm:min-h-[135px] lg:min-h-[160px] flex flex-col justify-start">
-            <span>Software &amp; Automatización Accesible para</span>
-            <span className="text-blue-600 font-extrabold inline-flex items-center justify-center lg:justify-start">
-              <span>{currentText}</span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6 text-center lg:text-left font-heading">
+            Software &amp; Automatización Accesible para{" "}
+            <span className="text-blue-600 font-extrabold">
+              {currentText}
               <span className="text-blue-600 animate-pulse font-bold ml-0.5">|</span>
             </span>
           </h1>
