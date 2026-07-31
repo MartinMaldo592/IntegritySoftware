@@ -75,3 +75,34 @@ html.lenis, html.lenis body {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
+
+/* Animated Gradient Text Utility for Logo */
+@keyframes textGradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.logo-gradient-text {
+  background: linear-gradient(
+    90deg,
+    #1d4ed8 0%,
+    #00d2ff 25%,
+    #3b82f6 50%,
+    #a855f7 75%,
+    #1d4ed8 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: textGradientMove 3s linear infinite;
+  filter: drop-shadow(0 2px 8px rgba(37, 99, 235, 0.25));
+}

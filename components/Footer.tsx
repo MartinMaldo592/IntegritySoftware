@@ -11,7 +11,7 @@ export default function Footer() {
                 IS
               </div>
               <div className="text-xl font-bold text-white tracking-tight font-heading">
-                Integrity <span className="text-blue-500 font-extrabold">Software</span>
+                Integrity <span className="logo-gradient-text font-extrabold">Software</span>
               </div>
             </a>
             <p className="text-slate-400 text-sm leading-relaxed">

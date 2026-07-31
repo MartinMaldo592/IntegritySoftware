@@ -24,7 +24,7 @@ export default function Navbar() {
             IS
           </div>
           <div className="text-xl font-bold text-slate-900 tracking-tight font-heading">
-            Integrity <span className="text-blue-600 font-extrabold">Software</span>
+            Integrity <span className="logo-gradient-text font-extrabold">Software</span>
           </div>
         </a>
 
