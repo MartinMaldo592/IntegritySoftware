@@ -7,7 +7,7 @@ import BenefitsGrid from "@/components/BenefitsGrid";
 import ServicesCarousel from "@/components/ServicesCarousel";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import DeliverablesTabs from "@/components/DeliverablesTabs";
-import TrustBanner from "@/components/TrustBanner";
+import FaqSection from "@/components/FaqSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
@@ -26,7 +26,7 @@ export default function HomePage() {
       <ServicesCarousel />
       <TestimonialsCarousel />
       <DeliverablesTabs />
-      <TrustBanner />
+      <FaqSection />
       <ContactSection />
       <Footer />
       <WhatsAppFloat />

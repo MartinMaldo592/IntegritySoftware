@@ -30,16 +30,17 @@ export default function Navbar() {
 
         {/* Desktop Nav Menu */}
         <ul className="hidden lg:flex items-center gap-8 list-none m-0 p-0">
-          <li><a href="#inicio" className="text-slate-600 hover:text-blue-600 font-medium text-sm transition-colors">Inicio</a></li>
-          <li><a href="#servicios" className="text-slate-600 hover:text-blue-600 font-medium text-sm transition-colors">Servicios MYPE</a></li>
-          <li><a href="#casos" className="text-slate-600 hover:text-blue-600 font-medium text-sm transition-colors">Casos de Éxito</a></li>
-          <li><a href="#detalles" className="text-slate-600 hover:text-blue-600 font-medium text-sm transition-colors">Entregables</a></li>
-          <li><a href="#contacto" className="text-slate-600 hover:text-blue-600 font-medium text-sm transition-colors">Cotizar por WhatsApp</a></li>
+          <li><a href="/" className="text-slate-600 hover:text-blue-600 font-medium text-sm transition-colors">Inicio</a></li>
+          <li><a href="/servicios" className="text-slate-600 hover:text-blue-600 font-medium text-sm transition-colors">Servicios MYPE</a></li>
+          <li><a href="/nosotros" className="text-slate-600 hover:text-blue-600 font-medium text-sm transition-colors">Nosotros</a></li>
+          <li><a href="/portafolio" className="text-slate-600 hover:text-blue-600 font-medium text-sm transition-colors">Portafolio</a></li>
+          <li><a href="/#faq" className="text-slate-600 hover:text-blue-600 font-medium text-sm transition-colors">FAQ</a></li>
+          <li><a href="/#contacto" className="text-slate-600 hover:text-blue-600 font-medium text-sm transition-colors">Cotizar</a></li>
         </ul>
 
         <div className="flex items-center gap-4">
           <a
-            href="https://wa.me/51900000000?text=Hola%20Integrity%20Software,%20quisiera%20cotizar%20un%20servicio%20para%20mi%20empresa"
+            href="https://wa.me/51982432561?text=Hola%20Integrity%20Software,%20quisiera%20cotizar%20un%20servicio%20para%20mi%20empresa"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-sm hover:shadow transition-all duration-200"
@@ -60,15 +61,16 @@ export default function Navbar() {
       {/* Mobile Drawer Overlay Menu */}
       <div className={`lg:hidden transition-all duration-300 overflow-hidden bg-white border-b border-slate-200 ${isMobileOpen ? "max-h-96 py-4 opacity-100" : "max-h-0 py-0 opacity-0 pointer-events-none"}`}>
         <ul className="flex flex-col gap-3 list-none px-6 py-2 m-0">
-          <li><a href="#inicio" className="text-slate-700 hover:text-blue-600 font-semibold block py-2" onClick={() => setIsMobileOpen(false)}>Inicio</a></li>
-          <li><a href="#servicios" className="text-slate-700 hover:text-blue-600 font-semibold block py-2" onClick={() => setIsMobileOpen(false)}>Servicios MYPE</a></li>
-          <li><a href="#casos" className="text-slate-700 hover:text-blue-600 font-semibold block py-2" onClick={() => setIsMobileOpen(false)}>Casos de Éxito</a></li>
-          <li><a href="#detalles" className="text-slate-700 hover:text-blue-600 font-semibold block py-2" onClick={() => setIsMobileOpen(false)}>Entregables</a></li>
-          <li><a href="#contacto" className="text-slate-700 hover:text-blue-600 font-semibold block py-2" onClick={() => setIsMobileOpen(false)}>Cotizar por WhatsApp</a></li>
+          <li><a href="/" className="text-slate-700 hover:text-blue-600 font-semibold block py-2" onClick={() => setIsMobileOpen(false)}>Inicio</a></li>
+          <li><a href="/servicios" className="text-slate-700 hover:text-blue-600 font-semibold block py-2" onClick={() => setIsMobileOpen(false)}>Servicios MYPE</a></li>
+          <li><a href="/nosotros" className="text-slate-700 hover:text-blue-600 font-semibold block py-2" onClick={() => setIsMobileOpen(false)}>Nosotros</a></li>
+          <li><a href="/portafolio" className="text-slate-700 hover:text-blue-600 font-semibold block py-2" onClick={() => setIsMobileOpen(false)}>Portafolio</a></li>
+          <li><a href="/#faq" className="text-slate-700 hover:text-blue-600 font-semibold block py-2" onClick={() => setIsMobileOpen(false)}>FAQ</a></li>
+          <li><a href="/#contacto" className="text-slate-700 hover:text-blue-600 font-semibold block py-2" onClick={() => setIsMobileOpen(false)}>Cotizar por WhatsApp</a></li>
         </ul>
         <div className="mt-4 px-6">
           <a
-            href="https://wa.me/51900000000?text=Hola%20Integrity%20Software,%20quisiera%20cotizar%20un%20servicio%20para%20mi%20empresa"
+            href="https://wa.me/51982432561?text=Hola%20Integrity%20Software,%20quisiera%20cotizar%20un%20servicio%20para%20mi%20empresa"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-sm px-5 py-3 rounded-xl shadow-sm w-full transition-all"

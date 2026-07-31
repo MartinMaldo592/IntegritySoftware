@@ -1,17 +1,42 @@
 "use client";
 
-import { useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { SERVICES_DATA } from "@/data/services";
 
 export default function ServicesCarousel() {
   const trackRef = useRef<HTMLDivElement | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
 
-  const scroll = (direction: "prev" | "next") => {
+  const updateActiveIndex = () => {
     if (!trackRef.current) return;
     const cardItem = trackRef.current.querySelector<HTMLDivElement>(".carousel-card-item");
-    const cardWidth = cardItem?.offsetWidth || 300;
-    const scrollAmount = (cardWidth + 28) * (direction === "next" ? 1.2 : -1.2);
-    trackRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    if (!cardItem) return;
+    const cardWidth = cardItem.offsetWidth + 24; // width + gap
+    const index = Math.round(trackRef.current.scrollLeft / cardWidth);
+    setActiveIndex(Math.min(Math.max(index, 0), SERVICES_DATA.length - 1));
+  };
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    track.addEventListener("scroll", updateActiveIndex, { passive: true });
+    return () => track.removeEventListener("scroll", updateActiveIndex);
+  }, []);
+
+  const scrollToIndex = (index: number) => {
+    if (!trackRef.current) return;
+    const cardItem = trackRef.current.querySelector<HTMLDivElement>(".carousel-card-item");
+    if (!cardItem) return;
+    const cardWidth = cardItem.offsetWidth + 24;
+    trackRef.current.scrollTo({ left: index * cardWidth, behavior: "smooth" });
+    setActiveIndex(index);
+  };
+
+  const scroll = (direction: "prev" | "next") => {
+    const targetIndex = direction === "next"
+      ? Math.min(activeIndex + 1, SERVICES_DATA.length - 1)
+      : Math.max(activeIndex - 1, 0);
+    scrollToIndex(targetIndex);
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -74,18 +99,37 @@ export default function ServicesCarousel() {
             ))}
           </div>
 
-          <div className="flex justify-center gap-3 mt-6">
+          {/* Navigation Controls: Arrows + Dots Indicators */}
+          <div className="flex items-center justify-center gap-4 mt-6">
             <button
-              className="w-11 h-11 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 shadow-sm flex items-center justify-center transition-all cursor-pointer text-sm"
+              className="w-10 h-10 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 shadow-sm flex items-center justify-center transition-all cursor-pointer text-sm disabled:opacity-40 disabled:cursor-not-allowed"
               onClick={() => scroll("prev")}
-              aria-label="Anterior"
+              disabled={activeIndex === 0}
+              aria-label="Servicio Anterior"
             >
               <i className="fas fa-chevron-left"></i>
             </button>
+
+            <div className="flex items-center gap-2 px-2 py-1.5 bg-white border border-slate-200 rounded-full shadow-sm">
+              {SERVICES_DATA.map((_, idx) => (
+                <button
+                  key={idx}
+                  className={`transition-all duration-300 rounded-full cursor-pointer border-none p-0 ${
+                    activeIndex === idx
+                      ? "w-7 h-2.5 bg-blue-600 shadow-sm"
+                      : "w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400"
+                  }`}
+                  onClick={() => scrollToIndex(idx)}
+                  aria-label={`Ir al servicio ${idx + 1}`}
+                />
+              ))}
+            </div>
+
             <button
-              className="w-11 h-11 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 shadow-sm flex items-center justify-center transition-all cursor-pointer text-sm"
+              className="w-10 h-10 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 shadow-sm flex items-center justify-center transition-all cursor-pointer text-sm disabled:opacity-40 disabled:cursor-not-allowed"
               onClick={() => scroll("next")}
-              aria-label="Siguiente"
+              disabled={activeIndex === SERVICES_DATA.length - 1}
+              aria-label="Siguiente Servicio"
             >
               <i className="fas fa-chevron-right"></i>
             </button>

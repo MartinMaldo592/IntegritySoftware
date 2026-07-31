@@ -14,7 +14,7 @@ export default function ContactSection() {
     const waMsg = encodeURIComponent(
       `Hola Integrity Software (RUC 20609874125), mi nombre es ${name}. Quisiera cotizar el servicio seleccionado. Mi número es: ${tel}`
     );
-    const waUrl = `https://wa.me/51900000000?text=${waMsg}`;
+    const waUrl = `https://wa.me/51982432561?text=${waMsg}`;
 
     setFormStatus(true);
     setTimeout(() => {
@@ -132,7 +132,7 @@ export default function ContactSection() {
                 type="submit"
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-base py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer"
               >
-                <i className="fas fa-paper-plane"></i> Solicitar Cotización Rápida
+                <i className="fas fa-paper-plane"></i> Solicitar Cotización
               </button>
             </div>
           </form>

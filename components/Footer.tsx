@@ -42,13 +42,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white text-base font-bold mb-4 font-heading border-b border-slate-800 pb-2">Contacto Rápido</h4>
+            <h4 className="text-white text-base font-bold mb-4 font-heading border-b border-slate-800 pb-2">Contacto</h4>
             <ul className="space-y-2.5 text-sm text-slate-400 list-none p-0 m-0">
               <li className="font-semibold text-white">INTEGRITY SOFTWARE S.A.C.</li>
               <li>RUC: 20609874125</li>
               <li>Lima, Perú</li>
               <li>contacto@integritysoftware.pe</li>
-              <li className="text-emerald-400 font-semibold">WhatsApp: +51 900 000 000</li>
+              <li className="text-emerald-400 font-semibold">WhatsApp: +51 982 432 561</li>
             </ul>
           </div>
         </div>

@@ -1,23 +1,11 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
+import Image from "next/image";
 import { DELIVERABLES_DATA } from "@/data/deliverables";
 
 export default function DeliverablesTabs() {
   const [activeTab, setActiveTab] = useState<string>("tab-landing");
-  const tabNavRef = useRef<HTMLDivElement | null>(null);
-  const [indicatorStyle, setIndicatorStyle] = useState<React.CSSProperties>({});
-
-  useEffect(() => {
-    if (!tabNavRef.current) return;
-    const activeBtn = tabNavRef.current.querySelector<HTMLButtonElement>(`.tab-btn[data-tab="${activeTab}"]`);
-    if (activeBtn) {
-      setIndicatorStyle({
-        left: activeBtn.offsetLeft + "px",
-        width: activeBtn.offsetWidth + "px"
-      });
-    }
-  }, [activeTab]);
 
   const activeDeliverable = DELIVERABLES_DATA.find((d) => d.id === activeTab) || DELIVERABLES_DATA[0];
 
@@ -33,19 +21,14 @@ export default function DeliverablesTabs() {
           </p>
         </div>
 
-        <div className="relative flex justify-center gap-2 overflow-x-auto pb-4 mb-10 scrollbar-none reveal-on-scroll" ref={tabNavRef}>
-          <div
-            className="hidden lg:block absolute top-0 bottom-4 bg-blue-600 rounded-full transition-all duration-300 pointer-events-none shadow-md shadow-blue-500/20"
-            style={indicatorStyle}
-          ></div>
+        <div className="flex flex-wrap justify-center gap-2.5 pb-4 mb-10 reveal-on-scroll">
           {DELIVERABLES_DATA.map((tab) => (
             <button
               key={tab.id}
-              data-tab={tab.id}
-              className={`relative z-10 px-5 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all duration-200 border cursor-pointer ${
+              className={`px-5 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all duration-200 border cursor-pointer ${
                 activeTab === tab.id
-                  ? "bg-blue-600 text-white border-blue-600 shadow-sm lg:bg-transparent lg:text-white lg:border-transparent"
-                  : "bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100"
+                  ? "bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-500/20 scale-105"
+                  : "bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200/80 hover:text-slate-900"
               }`}
               onClick={() => setActiveTab(tab.id)}
             >
@@ -82,8 +65,14 @@ export default function DeliverablesTabs() {
                 <strong className="text-blue-600 font-bold">Modalidad:</strong> {activeDeliverable.tag}
               </div>
             </div>
-            <div className="rounded-xl overflow-hidden shadow-lg border border-slate-200 bg-white max-h-[400px]">
-              <img src={activeDeliverable.img} alt={activeDeliverable.title} className="w-full h-full object-cover" />
+            <div className="relative rounded-xl overflow-hidden shadow-lg border border-slate-200 bg-white h-[300px] sm:h-[400px] w-full">
+              <Image
+                src={activeDeliverable.img}
+                alt={activeDeliverable.title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
             </div>
           </div>
         )}
