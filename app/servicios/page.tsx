@@ -23,6 +23,8 @@ export const metadata: Metadata = {
   ]
 };
 
+import AssemblyPiece from "@/components/AssemblyPiece";
+
 export default function ServiciosPage() {
   return (
     <>
@@ -32,24 +34,33 @@ export default function ServiciosPage() {
       <Navbar />
 
       <main className="bg-white">
-        {/* Header Hero Banner for Servicios */}
-        <section className="py-16 sm:py-20 bg-gradient-to-b from-slate-900 to-slate-800 text-white text-center">
-          <div className="w-[95%] max-w-5xl mx-auto px-4">
-            <div className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 px-4 py-1.5 rounded-full text-blue-300 font-bold text-xs uppercase tracking-wider mb-6">
-              <i className="fas fa-cubes"></i> Soluciones Tecnológicas Especializadas
+        <AssemblyPiece>
+          <section className="py-16 sm:py-20 bg-gradient-to-b from-slate-900 to-slate-800 text-white text-center">
+            <div className="w-[95%] max-w-5xl mx-auto px-4">
+              <div className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 px-4 py-1.5 rounded-full text-blue-300 font-bold text-xs uppercase tracking-wider mb-6">
+                <i className="fas fa-cubes"></i> Soluciones Tecnológicas Especializadas
+              </div>
+              <h1 className="text-3xl sm:text-5xl font-extrabold font-heading mb-6 tracking-tight">
+                Servicios de Software &amp; Automatización MYPE Perú
+              </h1>
+              <p className="text-slate-300 text-base sm:text-xl max-w-3xl mx-auto leading-relaxed">
+                Desarrollamos soluciones digitales a medida diseñadas específicamente para maximizar ventas, ahorrar tiempo y formalizar tu negocio en el mercado peruano.
+              </p>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-extrabold font-heading mb-6 tracking-tight">
-              Servicios de Software &amp; Automatización MYPE Perú
-            </h1>
-            <p className="text-slate-300 text-base sm:text-xl max-w-3xl mx-auto leading-relaxed">
-              Desarrollamos soluciones digitales a medida diseñadas específicamente para maximizar ventas, ahorrar tiempo y formalizar tu negocio en el mercado peruano.
-            </p>
-          </div>
-        </section>
+          </section>
+        </AssemblyPiece>
 
-        <ServicesCarousel />
-        <DeliverablesTabs />
-        <ContactSection />
+        <AssemblyPiece>
+          <ServicesCarousel />
+        </AssemblyPiece>
+
+        <AssemblyPiece>
+          <DeliverablesTabs />
+        </AssemblyPiece>
+
+        <AssemblyPiece>
+          <ContactSection />
+        </AssemblyPiece>
       </main>
 
       <Footer />
