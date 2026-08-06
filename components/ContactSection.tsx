@@ -9,17 +9,27 @@ export default function ContactSection() {
     e.preventDefault();
     const target = e.target as HTMLFormElement;
     const name = (target.elements.namedItem("c-fullname") as HTMLInputElement).value;
+    const comp = (target.elements.namedItem("c-comp") as HTMLInputElement).value;
     const tel = (target.elements.namedItem("c-tel") as HTMLInputElement).value;
+    const interestSelect = target.elements.namedItem("c-interest") as HTMLSelectElement;
+    const serviceText = interestSelect.options[interestSelect.selectedIndex]?.text || "Servicio General";
+    const userMsg = (target.elements.namedItem("c-msg") as HTMLTextAreaElement).value;
 
     const waMsg = encodeURIComponent(
-      `Hola Integrity Software (RUC 20609874125), mi nombre es ${name}. Quisiera cotizar el servicio seleccionado. Mi número es: ${tel}`
+      `Hola Integrity Software (RUC 20609874125).\n` +
+      `📌 *Solicitud de Cotización*\n` +
+      `- *Nombre/Negocio:* ${name}\n` +
+      `- *Rubro:* ${comp}\n` +
+      `- *Teléfono:* ${tel}\n` +
+      `- *Servicio:* ${serviceText}\n` +
+      (userMsg ? `- *Detalles:* ${userMsg}` : "")
     );
     const waUrl = `https://wa.me/51982432561?text=${waMsg}`;
 
     setFormStatus(true);
     setTimeout(() => {
       window.open(waUrl, "_blank");
-    }, 1000);
+    }, 800);
   };
 
   return (
@@ -110,7 +120,7 @@ export default function ContactSection() {
                 <option value="s1">1. Landing Page + Bot de WhatsApp</option>
                 <option value="s2">2. Catálogo Digital / Tienda Virtual con Yape y Culqi</option>
                 <option value="s3">3. Sistema de Gestión a Medida - ERP/CRM</option>
-                <option value="s4">4. Automatización &amp; Conexión SUNAT</option>
+                <option value="s4">4. Automatización de Procesos &amp; APIs Web</option>
                 <option value="s5">5. Mantenimiento &amp; Soporte Técnico Mensual</option>
               </select>
             </div>

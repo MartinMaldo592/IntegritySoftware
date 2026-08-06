@@ -5,7 +5,7 @@ import React from "react";
 export const metadata: Metadata = {
   title: "Integrity Software | Desarrollo de Software & Automatización MYPE Perú",
   description:
-    "Integrity Software S.A.C. (RUC 20609874125). Empresa peruana especializada en desarrollo de páginas web, bots de WhatsApp, tiendas virtuales con Yape/Plin, sistemas ERP/CRM y automatizaciones SUNAT para MYPES en Perú.",
+    "Integrity Software S.A.C. (RUC 20609874125). Empresa peruana especializada en desarrollo de páginas web, bots de WhatsApp, tiendas virtuales con Yape/Plin, sistemas ERP/CRM y automatizaciones de procesos para MYPES en Perú.",
   keywords: [
     "Integrity Software",
     "RUC 20609874125",
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "Bot de WhatsApp Lima",
     "Tienda Virtual Yape Culqi",
     "ERP CRM MYPE",
-    "Automatización SUNAT Peru"
+    "Automatización de Procesos Peru"
   ]
 };
 

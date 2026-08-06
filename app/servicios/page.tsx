@@ -12,13 +12,13 @@ import ScrollReveal from "@/components/ScrollReveal";
 export const metadata: Metadata = {
   title: "Servicios de Software & Automatización MYPE Perú | Integrity Software",
   description:
-    "Desarrollo de páginas web, chatbots de WhatsApp 24/7, tiendas virtuales con Yape/Plin, sistemas ERP/CRM y automatizaciones SUNAT para MYPES en Perú.",
+    "Desarrollo de páginas web, chatbots de WhatsApp 24/7, tiendas virtuales con Yape/Plin, sistemas ERP/CRM y automatizaciones de procesos para MYPES en Perú.",
   keywords: [
     "Servicios Software MYPE Peru",
     "Desarrollo Web Lima",
     "Chatbot WhatsApp Peru",
     "Tiendas Virtuales Yape Plin",
-    "Facturacion Electronica SUNAT",
+    "Automatizacion de Procesos",
     "ERP CRM Peru"
   ]
 };

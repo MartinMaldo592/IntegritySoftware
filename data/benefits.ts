@@ -12,8 +12,8 @@ export const BENEFITS_DATA: BenefitItem[] = [
     description: "Tus prospectos reciben respuesta inmediata a cualquier hora del día, cerrando más ventas."
   },
   {
-    icon: "fas fa-receipt",
-    title: "Facturación SUNAT Sin Errores",
-    description: "Emisión directa de boletas y facturas electrónicas para evitar sanciones tributarias."
+    icon: "fas fa-chart-line",
+    title: "Control Total de tu Negocio",
+    description: "Visualiza tus ventas, caja e inventarios en tiempo real desde cualquier smartphone o laptop."
   }
 ];

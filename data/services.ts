@@ -20,10 +20,10 @@ export const SERVICES_DATA: ServiceItem[] = [
     badge: "⚡ Sistema Web Personalizado"
   },
   {
-    icon: "fas fa-file-invoice-dollar",
-    title: "4. Conexión SUNAT & APIs",
-    problemSolved: "Sincronizar sus ventas con facturación electrónica (SUNAT/OSE) o enviar reportes automáticos de caja por WhatsApp.",
-    badge: "⚡ Conexión Automática SUNAT"
+    icon: "fas fa-cogs",
+    title: "4. Automatización de Procesos & APIs Web",
+    problemSolved: "Conectar formularios, bases de datos y sistemas para envío de reportes automáticos por WhatsApp, correo y alertas de ventas.",
+    badge: "⚡ Flujos Automáticos 24/7"
   },
   {
     icon: "fas fa-wrench",

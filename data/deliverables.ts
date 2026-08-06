@@ -41,14 +41,14 @@ export const DELIVERABLES_DATA: DeliverableTab[] = [
     img: "/img/dashboard_mockup.jpg"
   },
   {
-    id: "tab-sunat",
-    navLabel: "4. SUNAT & APIs",
-    title: "Automatización & Conexión de Sistemas (SUNAT/APIs)",
-    description: "Conecta tus ventas diarias con la emisión automática de boletas y facturas en SUNAT sin digitar nada manualmente.",
+    id: "tab-auto",
+    navLabel: "4. APIs & Automatización",
+    title: "Automatización de Procesos & Conexiones API Web",
+    description: "Conecta tus sistemas, formularios y bases de datos con notificaciones y reportes automáticos.",
     features: [
-      "SUNAT / OSE: Emisión automática de comprobantes electrónicos (Boletas / Facturas).",
-      "Reportes Automáticos: Envío diario de resumen de ventas por correo o WhatsApp.",
-      "Sincronización: Conexión de hojas de Google Sheets / Excel con tu sistema."
+      "Notificaciones Automáticas: Alertas inmediatas de ventas e inventarios por WhatsApp o correo.",
+      "Integración de APIs: Conexión con servicios externos, webhooks y bases de datos cloud.",
+      "Sincronización: Conexión fluida entre formularios web, sistemas internos y Excel/Google Sheets."
     ],
     tag: "Integración Directa",
     img: "/img/dashboard_mockup.jpg"

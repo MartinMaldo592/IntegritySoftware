@@ -80,8 +80,8 @@ IntegritySoftware/
    - Carrito de compras con integración de pasarelas de pago peruanas (**Yape**, **Plin**, **Culqi**, Mercado Pago).
 3. **Sistema ERP / CRM MYPE a Medida:**
    - Control de inventario, ventas, clientes e historial de caja accesible desde smartphone o PC.
-4. **Conexión SUNAT & APIs:**
-   - Emisión directa de comprobantes electrónicos (Boletas / Facturas) e integración de reportes de caja por WhatsApp.
+4. **Automatización de Procesos & APIs Web:**
+   - Conexión de bases de datos, notificaciones automáticas por WhatsApp / correo y alertas de ventas.
 5. **Mantenimiento & Soporte Técnico Mensual:**
    - Administración de servidores cloud, copias de seguridad continuas y soporte prioritario.
 

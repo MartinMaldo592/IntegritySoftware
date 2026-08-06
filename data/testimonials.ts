@@ -10,7 +10,7 @@ export const TESTIMONIALS_DATA: TestimonialItem[] = [
   },
   {
     stars: 5,
-    quote: '"Teníamos todo el inventario en hojas de Excel desordenadas. Nos desarrollaron un sistema web simple e intuitivo y ahora cobramos con Yape y emitimos boletas SUNAT sin complicaciones."',
+    quote: '"Teníamos todo el inventario en hojas de Excel desordenadas. Nos desarrollaron un sistema web simple e intuitivo y ahora cobramos con Yape y controlamos el stock en tiempo real."',
     authorName: "Sr. Carlos Palacios",
     authorRole: "Importadora & Distribuidora InkaTools (Arequipa)",
     avatarInitials: "CP"

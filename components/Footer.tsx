@@ -25,7 +25,7 @@ export default function Footer() {
               <li><Link href="/servicios" className="text-slate-400 hover:text-white transition-colors">1. Landing + Bot de WhatsApp</Link></li>
               <li><Link href="/servicios" className="text-slate-400 hover:text-white transition-colors">2. Tienda Virtual &amp; Yape/Culqi</Link></li>
               <li><Link href="/servicios" className="text-slate-400 hover:text-white transition-colors">3. ERP/CRM MYPE a Medida</Link></li>
-              <li><Link href="/servicios" className="text-slate-400 hover:text-white transition-colors">4. Conexión SUNAT &amp; APIs</Link></li>
+              <li><Link href="/servicios" className="text-slate-400 hover:text-white transition-colors">4. Automatización &amp; APIs Web</Link></li>
               <li><Link href="/servicios" className="text-slate-400 hover:text-white transition-colors">5. Soporte Técnico Mensual</Link></li>
             </ul>
           </div>
