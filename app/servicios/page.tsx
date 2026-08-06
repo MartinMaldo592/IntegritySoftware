@@ -37,9 +37,6 @@ export default function ServiciosPage() {
         <AssemblyPiece>
           <section className="py-16 sm:py-20 bg-gradient-to-b from-slate-900 to-slate-800 text-white text-center">
             <div className="w-[95%] max-w-5xl mx-auto px-4">
-              <div className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 px-4 py-1.5 rounded-full text-blue-300 font-bold text-xs uppercase tracking-wider mb-6">
-                <i className="fas fa-cubes"></i> Soluciones Tecnológicas Especializadas
-              </div>
               <h1 className="text-3xl sm:text-5xl font-extrabold font-heading mb-6 tracking-tight">
                 Servicios de Software &amp; Automatización MYPE Perú
               </h1>

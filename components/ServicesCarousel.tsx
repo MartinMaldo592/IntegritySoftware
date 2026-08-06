@@ -46,14 +46,11 @@ export default function ServicesCarousel() {
     <section className="py-16 md:py-24 bg-slate-50/80 border-b border-slate-200" id="servicios">
       <div className="w-[95%] max-w-7xl mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-12 reveal-on-scroll">
-          <div className="inline-flex items-center gap-2 bg-blue-100 border border-blue-200 px-3.5 py-1.5 rounded-full text-blue-700 font-bold text-xs uppercase tracking-wider mb-4 shadow-sm">
-            <i className="fas fa-sparkles"></i> Transiciones Framer Motion
-          </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 font-heading tracking-tight mb-4">
             Soluciones Adaptadas a la Realidad MYPE Peruana
           </h2>
           <p className="text-slate-600 text-base sm:text-lg">
-            Haz clic en cualquier tarjeta para experimentar la expansión animada de alta fidelidad.
+            Explora nuestros paquetes de desarrollo a medida diseñados para impulsar el crecimiento de tu empresa.
           </p>
         </div>
 
