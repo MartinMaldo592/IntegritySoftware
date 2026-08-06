@@ -106,13 +106,30 @@ export default function HeroSection() {
             Ayudamos a micro y pequeñas empresas peruanas a vender más y ahorrar tiempo: Landing pages con Bot de WhatsApp, Tiendas virtuales con Yape/Plin, Sistemas ERP/CRM a medida y Automatizaciones de procesos con garantía de soporte y desarrollo personalizado.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3.5 justify-center lg:justify-start">
             <a href="#contacto" className="inline-flex items-center justify-center gap-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-base px-7 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-200">
               <i className="fas fa-paper-plane"></i> Cotizar mi Proyecto
             </a>
-            <a href="#servicios" className="inline-flex items-center justify-center gap-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-base px-7 py-3.5 rounded-xl transition-all duration-200">
-              Ver Servicios Especializados
+            <a href="#servicios" className="inline-flex items-center justify-center gap-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-base px-6 py-3.5 rounded-xl transition-all duration-200">
+              Ver Servicios
             </a>
+            <a
+              href="https://wa.me/51982432561?text=Hola%20Integrity%20Software,%20quisiera%20recibir%20el%20Brochure%20Corporativo%20en%20PDF"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100 font-semibold text-sm px-5 py-3.5 rounded-xl transition-all duration-200"
+            >
+              <i className="fas fa-file-pdf text-emerald-600 text-base"></i> Brochure PDF
+            </a>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-slate-200/80 flex flex-wrap gap-3 text-xs font-semibold text-slate-700 justify-center lg:justify-start">
+            <span className="flex items-center gap-1.5 bg-slate-100/90 text-slate-700 px-3 py-1.5 rounded-lg border border-slate-200">
+              <i className="fas fa-handshake text-blue-600"></i> Modalidad: 50% Inicio / 50% Entrega
+            </span>
+            <span className="flex items-center gap-1.5 bg-emerald-50/90 text-emerald-800 px-3 py-1.5 rounded-lg border border-emerald-200">
+              <i className="fas fa-shield-check text-emerald-600"></i> 30 Días Garantía &amp; Capacitación Gratis
+            </span>
           </div>
         </div>
 
