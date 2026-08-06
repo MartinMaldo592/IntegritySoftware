@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { buildDetailedQuoteUrl } from "@/lib/whatsapp/quote";
 
 export default function ContactSection() {
   const [formStatus, setFormStatus] = useState<boolean>(false);
@@ -15,16 +16,15 @@ export default function ContactSection() {
     const serviceText = interestSelect.options[interestSelect.selectedIndex]?.text || "Servicio General";
     const userMsg = (target.elements.namedItem("c-msg") as HTMLTextAreaElement).value;
 
-    const waMsg = encodeURIComponent(
-      `Hola Integrity Software (RUC 20609874125).\n` +
-      `📌 *Solicitud de Cotización*\n` +
-      `- *Nombre/Negocio:* ${name}\n` +
-      `- *Rubro:* ${comp}\n` +
-      `- *Teléfono:* ${tel}\n` +
-      `- *Servicio:* ${serviceText}\n` +
-      (userMsg ? `- *Detalles:* ${userMsg}` : "")
+    const waUrl = buildDetailedQuoteUrl(
+      {
+        name,
+        businessRubro: comp,
+        phone: tel,
+        messageDetails: userMsg
+      },
+      serviceText
     );
-    const waUrl = `https://wa.me/51982432561?text=${waMsg}`;
 
     setFormStatus(true);
     setTimeout(() => {

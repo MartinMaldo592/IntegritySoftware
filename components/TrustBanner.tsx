@@ -1,5 +1,7 @@
 "use client";
 
+import { buildBrochureRequestUrl } from "@/lib/whatsapp/quote";
+
 export default function TrustBanner() {
   return (
     <div className="w-[95%] max-w-7xl mx-auto px-4 md:px-6 my-12 reveal-on-scroll">
@@ -20,7 +22,7 @@ export default function TrustBanner() {
 
         <div className="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto flex-none">
           <a
-            href="https://wa.me/51982432561?text=Hola%20Integrity%20Software,%20quisiera%20recibir%20el%20Brochure%20Corporativo%20en%20PDF"
+            href={buildBrochureRequestUrl()}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm px-5 py-3 rounded-xl transition-all shadow-sm"

@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SERVICES_DATA } from "@/data/services";
 import { ServiceItem } from "@/types";
+import { buildServiceQuoteUrl } from "@/lib/whatsapp/quote";
 
 export default function ServicesCarousel() {
   const trackRef = useRef<HTMLDivElement | null>(null);
@@ -229,9 +230,7 @@ export default function ServicesCarousel() {
                 className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-100"
               >
                 <a
-                  href={`https://wa.me/51982432561?text=${encodeURIComponent(
-                    `Hola Integrity Software (RUC 20609874125), quisiera cotizar el servicio: ${selectedService.item.title}`
-                  )}`}
+                  href={buildServiceQuoteUrl(selectedService.item.title)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm py-4 px-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center flex items-center justify-center gap-2.5"

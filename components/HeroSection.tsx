@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { HERO_PHRASES, HERO_SLIDES } from "@/data/hero";
+import { buildBrochureRequestUrl } from "@/lib/whatsapp/quote";
 
 interface TypewriterState {
   phraseIndex: number;
@@ -114,7 +115,7 @@ export default function HeroSection() {
               Ver Servicios
             </a>
             <a
-              href="https://wa.me/51982432561?text=Hola%20Integrity%20Software,%20quisiera%20recibir%20el%20Brochure%20Corporativo%20en%20PDF"
+              href={buildBrochureRequestUrl()}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100 font-semibold text-sm px-5 py-3.5 rounded-xl transition-all duration-200"
